@@ -30,7 +30,7 @@ public class Piece : MonoBehaviour
 
     // Can the user move this piece with arrow keys?
     public bool canMove()
-    {
+    {   
         // The user can move this piece if and only if he owns it and did not released it yet
         return owner == Connect4Game.Owner.PLAYER && !isReleased;
     }
@@ -43,8 +43,8 @@ public class Piece : MonoBehaviour
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
+        this.transform.position =new Vector3(newX, 7.070001f, -0.03f);
 
-        // TODO: update piece position
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -56,7 +56,8 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        // TODO: update piece position
+        this.transform.position =new Vector3(newX, 7.070001f, -0.03f);
+       
     }
 
     // Release the piece so it drops in the column
@@ -73,8 +74,20 @@ public class Piece : MonoBehaviour
         // Update owner
         this.owner = owner;
 
-        // TODO: Assign the correct material to the piece renderer
+        if(this.owner==Connect4Game.Owner.PLAYER ){
+            this.GetComponent<Renderer>().material.color = Color.yellow;
+        }else{
+            this.GetComponent<Renderer>().material.color = Color.red;
+        }
     }
+    
+    public bool StopMoving(){
+        if(this.GetComponent<Rigidbody>().velocity==new Vector3(0,0,0) && isReleased==true && this.transform.position!= new Vector3(this.transform.position.x,7.070001f, -0.03f)){
+            return true;
+        }else{
+            return false;
+        }
 
-    // TODO: Detect When the piece reached its final place and trigger next turn
+    }
+    
 }

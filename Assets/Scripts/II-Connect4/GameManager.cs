@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
         // Create a new piece and update its ownership (for logic and visual)
         currentPiece = Instantiate(piecePrefab, piecesContainer).GetComponent<Piece>();
         currentPiece.setOwner(playerTurn? Connect4Game.Owner.PLAYER : Connect4Game.Owner.AI);
+        currentPiece.transform.position =new Vector3(0.00f, 7.07f, -0.03f);
+
 
         // If it's AI turn, select a random column from the avaialble ones (not very strategic AI) and simulate its actions
         if (!playerTurn)
@@ -102,10 +104,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // TO REMOVE when next turn is triggered by a piece reaching its final place
-        // Temporary going to next turn when pressing tab
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (currentPiece.StopMoving()==true){
             NextTurn();
+        };
     }
 
     // Start the next turn
