@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Piece : MonoBehaviour
+
+    
 {
+    // Min and max limits between which the player can move the ball laterally
+    public float xMinLimit = 2.8f;
+    public float xMaxLimit = -2.8f;
+
     // Width of a column in the board
     private const float COLUMN_WIDTH = 1f;
 
@@ -42,9 +48,14 @@ public class Piece : MonoBehaviour
         column = Mathf.Min(column+1, 6);
 
         // New x position of the piece
-        float newX = (column - 3) * COLUMN_WIDTH;
+        float newX = (column - 2) * COLUMN_WIDTH;
 
         // TODO: update piece position
+
+        if (Input.GetKey(KeyCode.RightArrow) && transform.position.x <= newX)
+        {
+            transform.Translate(COLUMN_WIDTH, 0f, 0f);
+        }
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -54,8 +65,13 @@ public class Piece : MonoBehaviour
         column = Mathf.Max(column - 1, 0);
 
         // New x position of the piece
-        float newX = (column - 3) * COLUMN_WIDTH;
+        float newX = (column - 2) * COLUMN_WIDTH;
 
+
+        if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x >= newX)
+        {
+            transform.Translate((COLUMN_WIDTH * -1), 0f, 0f);
+        }
         // TODO: update piece position
     }
 
