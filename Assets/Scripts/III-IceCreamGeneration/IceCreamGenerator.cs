@@ -63,7 +63,6 @@ public class IceCreamGenerator : MonoBehaviour
         // Mesh generation
         Mesh mesh = new Mesh();
 
-        // TODO: Add vertices calculations
         #region Vertices calculation
         Vector3[] vertices = new Vector3[resolution + 2];
         int[] tris = new int[resolution * 2 * 3];

@@ -71,6 +71,9 @@ public class GameManager : MonoBehaviour
         currentPiece.setOwner(playerTurn? Connect4Game.Owner.PLAYER : Connect4Game.Owner.AI);
 
         // If it's AI turn, select a random column from the avaialble ones (not very strategic AI) and simulate its actions
+        // TODO: Make a better AI (somehow)
+        // Idea: If there is a column where the player would win if they were to place its piece,
+        // then place here. Also check if you move would let the player win.
         if (!playerTurn)
         {
             List<int> availablesColumns = game.getAvailableColumns();
