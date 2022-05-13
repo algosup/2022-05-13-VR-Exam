@@ -77,10 +77,10 @@ public class Piece : MonoBehaviour
         // I don't know how to get access to the manager's instance
         if(this.owner == Connect4Game.Owner.PLAYER){
             MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();        
-            // meshRenderer.material = manager.playerPieceMaterial; 
+            meshRenderer.material = GameManager.instance.playerPieceMaterial; 
         }else if (this.owner == Connect4Game.Owner.AI){
             MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
-            // meshRenderer.material = manager.AIPieceMaterial;
+            meshRenderer.material = GameManager.instance.AIPieceMaterial;
         }
         // TODO: Assign the correct material to the piece renderer
     }
