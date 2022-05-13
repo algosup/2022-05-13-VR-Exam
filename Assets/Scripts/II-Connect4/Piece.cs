@@ -43,7 +43,10 @@ public class Piece : MonoBehaviour
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
-
+        
+        if (Input.GetKey(KeyCode.RightArrow) && x <= column){
+            transform.position += COLUMN_WIDTH;
+        }
         // TODO: update piece position
     }
 
@@ -56,6 +59,9 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
+        if (Input.GetKey(KeyCode.LeftArrow) && x >= column){
+            transform.position += COLUMN_WIDTH;
+        }
         // TODO: update piece position
     }
 
@@ -71,8 +77,11 @@ public class Piece : MonoBehaviour
     public void setOwner(Connect4Game.Owner owner)
     {
         // Update owner
-        this.owner = owner;
-
+        // this.owner = owner;
+        // if (owner = Connect4Game.Owner.PLAYER);
+        //     currentPiece.material =
+        // if (owner = Connect4Game.Owner.AI);
+        //     currentPiece.material
         // TODO: Assign the correct material to the piece renderer
     }
 
