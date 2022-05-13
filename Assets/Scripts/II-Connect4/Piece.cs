@@ -74,7 +74,20 @@ public class Piece : MonoBehaviour
         this.owner = owner;
 
         // TODO: Assign the correct material to the piece renderer
+        currentPiece.setMaterial(playerTurn?
+        Connect4Game.Owner.PLAYER = playerPieceMaterial :
+        Connect4Game.Owner.AI = playerPieceAI);
+    
     }
-
+}
     // TODO: Detect When the piece reached its final place and trigger next turn
+    public void triggerNextTurn()
+    
+    {
+    
+    if(piece.hasReachedFinalPlace)
+    NextTurn();
+
+    }
+    
 }
