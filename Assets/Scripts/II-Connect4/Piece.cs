@@ -49,7 +49,7 @@ public class Piece : MonoBehaviour
 
         if (Input.GetKey(KeyCode.R))
         {
-            rigid = newX;
+            newX.transform.transform.localPosition = new Vector3(0., 0., 0);
         }
 
     }
