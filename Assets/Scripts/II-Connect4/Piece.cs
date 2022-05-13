@@ -38,6 +38,7 @@ public class Piece : MonoBehaviour
     // Move the piece above the next column on the right (if exists)
     public void MoveRight()
     {
+        
         // Limit the column to 6 max
         column = Mathf.Min(column+1, 6);
 
@@ -45,6 +46,12 @@ public class Piece : MonoBehaviour
         float newX = (column - 3) * COLUMN_WIDTH;
 
         // TODO: update piece position
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            rigid = newX;
+        }
+
     }
 
     // Move the piece above the next column on the left (if exists)
