@@ -25,12 +25,13 @@ public class Piece : MonoBehaviour
     // Has this piece reached its final position in the board (bottom of the board or above another piece)
     public bool hasReachedFinalPlace = false;
 
-    private GameManager GameManager;
+    Material Material;
 
     void Awake()
     {
         // Get rigidbody component
         rigid = GetComponent<Rigidbody>();
+        
     }
 
     // Can the user move this piece with arrow keys?
@@ -83,19 +84,18 @@ public class Piece : MonoBehaviour
     {
         // Update owner
         this.owner = owner;
-        
 
         // TODO: Assign the correct material to the piece renderer
         if (this.owner == Connect4Game.Owner.PLAYER)
         {
-            var x = gameObject.GetComponent<Material>();
-            x = playerPieceMaterial;
+            var x = this.gameObject.GetComponent<Renderer>();
+            x.material = playerPieceMaterial;
         }
         else if (this.owner == Connect4Game.Owner.AI)
         {
-            var x = gameObject.GetComponent<Material>();
-            x = AIPieceMaterial;
-            
+            var x = this.gameObject.GetComponent<Renderer>();
+            x.material = AIPieceMaterial;
+
         }
 
         // TODO: Detect When the piece reached its final place and trigger next turn
