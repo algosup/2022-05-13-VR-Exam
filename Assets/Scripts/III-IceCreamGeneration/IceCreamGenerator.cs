@@ -63,24 +63,26 @@ public class IceCreamGenerator : MonoBehaviour
         // Mesh generation
         Mesh mesh = new Mesh();
 
+        float x, y, z;
         for (float i = 0; i < (2 * Mathf.PI); i += (2 * Mathf.PI) / resolution)
         {
             //This is useless
             //Where do I input those value?
             if(i % 2 == 0)
             {
-                float x = radius * Mathf.Cos(i);
-                float y = height;
-                float z = radius * Mathf.Sin(i);
+                x = radius * Mathf.Cos(i);
+                y = height;
+                z = radius * Mathf.Sin(i);
             }
             else
             {
-                float x = (radius * (float)0.9) * Mathf.Cos(i);
-                float y = height;
-                float z = (radius * (float)0.9) * Mathf.Sin(i);
+                x = (radius * (float)0.9) * Mathf.Cos(i);
+                y = height;
+                z = (radius * (float)0.9) * Mathf.Sin(i);
             }
 
-
+            var vertice[] = [new Vector3(x, y, z), new Vector3(0, 0, 0)];
+            Mesh.SetVertices(vertice);
         }
 
         //I don't get it what is this thing????????
