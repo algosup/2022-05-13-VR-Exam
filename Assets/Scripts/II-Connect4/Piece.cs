@@ -39,13 +39,13 @@ public class Piece : MonoBehaviour
     public void MoveRight()
     {
         // Limit the column to 6 max
-        column = Mathf.Min(column+1, 6);
+        column = Mathf.Min(column + 1, 6);
         print(column);
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        transform.Translate(new Vector3(newX,0,0));
+        transform.position = new Vector3(newX, transform.position.y, transform.position.z);
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -57,7 +57,7 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        transform.Translate(new Vector3(newX, 0, 0));
+        transform.position = new Vector3(newX, transform.position.y, transform.position.z);
     }
 
     // Release the piece so it drops in the column
@@ -73,8 +73,6 @@ public class Piece : MonoBehaviour
     {
         // Update owner
         this.owner = owner;
-
-        // TODO: Assign the correct material to the piece renderer
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
