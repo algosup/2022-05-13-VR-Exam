@@ -74,7 +74,7 @@ public class Piece : MonoBehaviour
     {
         // Update owner
         this.owner = owner;
-        // I don't know how to get access to the manager's instance
+        
         if(this.owner == Connect4Game.Owner.PLAYER){
             MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();        
             meshRenderer.material = GameManager.instance.playerPieceMaterial; 
