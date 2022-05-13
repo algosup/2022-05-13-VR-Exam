@@ -80,9 +80,15 @@ public class Piece : MonoBehaviour
         //! Should have worked but unity.
         material = GetComponent<Material>();
         if(owner == Connect4Game.Owner.PLAYER)
+        {
             material = materialPlayer;
+//            material = Connect4Game.playerPieceMaterial;
+        }
         else
+        {
             material = materialIA;
+//            material = Connect4Game.AIPieceMaterial;
+        }
     }
 
     //// Detect When the piece reached its final place and trigger next turn
