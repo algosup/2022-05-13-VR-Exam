@@ -86,9 +86,13 @@ public class Piece : MonoBehaviour
         }
     }
 
-    // public void detectReachedFinalPlace(){ // TODO: Detect When the piece reached its final place and trigger next turn
-    //     if()
-    // } 
+    public void detectReachedFinalPlace(){ // TODO: Detect When the piece reached its final place and trigger next turn
+        if(hasReachedFinalPlace == true)
+        {
+            rigid.constraints = RigidbodyConstraints.FreezePosition;
+            setOwner(Connect4Game.Owner.PLAYER);
+        }
+    } 
 
     private void Start() {
          initialPos = transform.localPosition;
