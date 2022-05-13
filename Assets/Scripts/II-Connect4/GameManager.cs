@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //kept just in case
+        //iprovisation
         if (NextTurnTrigger)
         {
             NextTurn();

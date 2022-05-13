@@ -87,7 +87,7 @@ public class Piece : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("BottomCollider"))
+        if (other.gameObject.CompareTag("BottomCollider") || other.gameObject.CompareTag("Piece"))
         {
             GameManager.NextTurnTrigger = true;
         }
