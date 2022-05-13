@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     // Materials to be used by pieces to visually differentiate player and AI ones
     public Material AIPieceMaterial;
     public Material playerPieceMaterial;
+    public Material nonePieceMaterial;
 
     // Piece prefab
     public GameObject piecePrefab;
@@ -105,8 +106,8 @@ public class GameManager : MonoBehaviour
 
         // TO REMOVE when next turn is triggered by a piece reaching its final place
         // Temporary going to next turn when pressing tab
-        if (Input.GetKeyDown(KeyCode.Tab))
-            NextTurn();
+        //if (Input.GetKeyDown(KeyCode.Tab))
+        //    NextTurn();
     }
 
     // Start the next turn

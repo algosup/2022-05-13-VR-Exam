@@ -83,17 +83,18 @@ public class Piece : MonoBehaviour
         this.owner = owner;
 
 		// Assign the correct material to the piece renderer
+        MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
 		switch (owner) {
 			case Connect4Game.Owner.PLAYER:
-                // TODO
+                meshRenderer.material = gameManager.playerPieceMaterial;
 				break;
 			case Connect4Game.Owner.AI:
-                // TODO
+                meshRenderer.material = gameManager.AIPieceMaterial;
 				break;
 			default:
                 Debug.LogError("Unkown piece material.");
-                // TODO
-				break;
+                meshRenderer.material = gameManager.nonePieceMaterial;
+                break;
 		}
 	}
 
