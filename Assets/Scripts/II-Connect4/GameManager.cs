@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     public const float AI_BETWEEN_ACTIONS_DELAY = 0.2f;
 
     // Materials to be used by pieces to visually differentiate player and AI ones
-    public Material AIPieceMaterial;
-    public Material playerPieceMaterial;
+    public static Material AIPieceMaterial;
+    public static Material playerPieceMaterial;
 
     // Piece prefab
     public GameObject piecePrefab;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class Piece : MonoBehaviour
@@ -15,6 +16,9 @@ public class Piece : MonoBehaviour
     // Reference to the attached rigidbody
     private Rigidbody rigid;
 
+    // Referance to the attached material
+    private Material matter;
+
     // Has this piece been released yet?
     private bool isReleased = false;
 
@@ -26,6 +30,9 @@ public class Piece : MonoBehaviour
     {
         // Get rigidbody component
         rigid = GetComponent<Rigidbody>();
+
+        // Get Matterial component
+        matter = GetComponent<Material>();
     }
 
     // Can the user move this piece with arrow keys?
@@ -42,9 +49,10 @@ public class Piece : MonoBehaviour
         column = Mathf.Min(column+1, 6);
 
         // New x position of the piece
-        float newX = (column - 3) * COLUMN_WIDTH;
+        float newX = (column - 1) * COLUMN_WIDTH;
 
         // TODO: update piece position
+        this.column = ((int)newX);
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -54,7 +62,7 @@ public class Piece : MonoBehaviour
         column = Mathf.Max(column - 1, 0);
 
         // New x position of the piece
-        float newX = (column - 3) * COLUMN_WIDTH;
+        float newX = (column - 1) * COLUMN_WIDTH;
 
         // TODO: update piece position
     }
@@ -74,7 +82,14 @@ public class Piece : MonoBehaviour
         this.owner = owner;
 
         // TODO: Assign the correct material to the piece renderer
+        if (owner == Connect4Game.Owner.PLAYER)
+            this.matter.Equals(GameManager.playerPieceMaterial);
+        else
+            this.matter.Equals(GameManager.AIPieceMaterial);
+                
+                
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
+    
 }
