@@ -43,7 +43,8 @@ public class Piece : MonoBehaviour
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
-
+        Vector3 pos = new Vector3(newX,rigid.gameObject.transform.position.y,rigid.gameObject.transform.position.z);
+        rigid.gameObject.transform.position = pos;
         // TODO: update piece position
     }
 
@@ -55,7 +56,8 @@ public class Piece : MonoBehaviour
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
-
+        Vector3 pos = new Vector3(newX,rigid.gameObject.transform.position.y,rigid.gameObject.transform.position.z);
+        rigid.gameObject.transform.position = pos;
         // TODO: update piece position
     }
 
@@ -72,7 +74,14 @@ public class Piece : MonoBehaviour
     {
         // Update owner
         this.owner = owner;
-
+        // I don't know how to get access to the manager's instance
+        if(this.owner == Connect4Game.Owner.PLAYER){
+            MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();        
+            // meshRenderer.material = manager.playerPieceMaterial; 
+        }else if (this.owner == Connect4Game.Owner.AI){
+            MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
+            // meshRenderer.material = manager.AIPieceMaterial;
+        }
         // TODO: Assign the correct material to the piece renderer
     }
 
