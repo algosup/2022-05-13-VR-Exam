@@ -57,6 +57,11 @@ public class Piece : MonoBehaviour
         float newX = (column - 3) * COLUMN_WIDTH;
 
         // TODO: update piece position
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.localPosition += new Vector3(-COLUMN_WIDTH, 0, 0);
+        }
     }
 
     // Release the piece so it drops in the column
