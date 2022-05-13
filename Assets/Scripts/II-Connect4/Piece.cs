@@ -43,9 +43,9 @@ public class Piece : MonoBehaviour
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
+        // TODO: update piece position
         Vector3 pos = new Vector3(newX,rigid.gameObject.transform.position.y,rigid.gameObject.transform.position.z);
         rigid.gameObject.transform.position = pos;
-        // TODO: update piece position
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -56,9 +56,9 @@ public class Piece : MonoBehaviour
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
+        // TODO: update piece position
         Vector3 pos = new Vector3(newX,rigid.gameObject.transform.position.y,rigid.gameObject.transform.position.z);
         rigid.gameObject.transform.position = pos;
-        // TODO: update piece position
     }
 
     // Release the piece so it drops in the column
@@ -75,6 +75,7 @@ public class Piece : MonoBehaviour
         // Update owner
         this.owner = owner;
 
+        // TODO: Assign the correct material to the piece renderer
         if(this.owner == Connect4Game.Owner.PLAYER){
             MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();        
             meshRenderer.material = GameManager.instance.playerPieceMaterial; 
@@ -82,7 +83,6 @@ public class Piece : MonoBehaviour
             MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
             meshRenderer.material = GameManager.instance.AIPieceMaterial;
         }
-        // TODO: Assign the correct material to the piece renderer
     }
 
     // TODO: Detect When the piece reached its final place and trigger next 
@@ -94,4 +94,4 @@ public class Piece : MonoBehaviour
             GameManager.instance.NextTurn();
         }
     }
-}
+}   
