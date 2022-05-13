@@ -74,7 +74,7 @@ public class Piece : MonoBehaviour
     {
         // Update owner
         this.owner = owner;
-        
+
         if(this.owner == Connect4Game.Owner.PLAYER){
             MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();        
             meshRenderer.material = GameManager.instance.playerPieceMaterial; 
@@ -85,5 +85,13 @@ public class Piece : MonoBehaviour
         // TODO: Assign the correct material to the piece renderer
     }
 
-    // TODO: Detect When the piece reached its final place and trigger next turn
+    // TODO: Detect When the piece reached its final place and trigger next 
+    // I don't remember the exact name of the fuction 
+    // Lacks the detection on another piece
+    private void onCollide(Collider other){
+        if(other.tag == "BottomCollider"){
+            hasReachedFinalPlace = true;
+            GameManager.instance.NextTurn();
+        }
+    }
 }
