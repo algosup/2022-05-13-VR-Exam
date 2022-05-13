@@ -12,8 +12,13 @@ public class Piece : MonoBehaviour
     // Column in which this piece will be or has been released to
     public int column = 3;
 
+    public Material pieceColor;
+
     // Reference to the attached rigidbody
     private Rigidbody rigid;
+
+    private GameManager gameManager;
+
 
     // Has this piece been released yet?
     private bool isReleased = false;
@@ -74,6 +79,20 @@ public class Piece : MonoBehaviour
     {
         // Update owner
         this.owner = owner;
+
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        
+        pieceColor = meshRenderer.material;
+
+        //meshRenderer.material.shader = Shader.Find("Standard (Specularsetup)");
+
+
+        if (owner == Connect4Game.Owner.PLAYER)
+            pieceColor= gameManager.playerPieceMaterial;
+
+
+        else if (owner == Connect4Game.Owner.AI)
+            pieceColor= gameManager.AIPieceMaterial;
 
         // TODO: Assign the correct material to the piece renderer
     }
