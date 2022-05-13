@@ -79,7 +79,7 @@ public class IceCreamGenerator : MonoBehaviour
                 float theta = i * 2 * Mathf.PI / resolution;
             
                 // Vertices calculation :
-                vertices[i + 2] = new Vector3((radius * Mathf.Cos(theta)) * Mathf.Cos(phi), (radius * Mathf.Sin(theta)) * Mathf.Sin(phi), height );
+                vertices[i + 2] = new Vector3((radius * Mathf.Cos(theta)) * Mathf.Cos(phi), (radius * Mathf.Sin(theta)) * Mathf.Cos(phi), height);
 
 
                 // Triangles calcuation
