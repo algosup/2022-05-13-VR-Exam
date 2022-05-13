@@ -63,7 +63,27 @@ public class IceCreamGenerator : MonoBehaviour
         // Mesh generation
         Mesh mesh = new Mesh();
 
-        // TODO: Add vertices calculations
+        for (float i = 0; i < (2 * Mathf.PI); i += (2 * Mathf.PI) / resolution)
+        {
+            //This is useless
+            //Where do I input those value?
+            if(i % 2 == 0)
+            {
+                float x = radius * Mathf.Cos(i);
+                float y = height;
+                float z = radius * Mathf.Sin(i);
+            }
+            else
+            {
+                float x = (radius * (float)0.9) * Mathf.Cos(i);
+                float y = height;
+                float z = (radius * (float)0.9) * Mathf.Sin(i);
+            }
+
+
+        }
+
+        //I don't get it what is this thing????????
         #region Vertices calculation
         Vector3[] vertices = new Vector3[resolution + 2];
         int[] tris = new int[resolution * 2 * 3];
@@ -71,6 +91,8 @@ public class IceCreamGenerator : MonoBehaviour
 
         uvs[resolution] = new Vector2(0.5f, 0);
         uvs[resolution + 1] = new Vector2(0.5f, 1);
+
+
         for(int i = 0; i < resolution; i++)
         {
             float theta = i * 2 * Mathf.PI / resolution;
