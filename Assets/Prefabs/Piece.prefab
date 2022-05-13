@@ -98,7 +98,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 88
+  m_Constraints: 122
   m_CollisionDetection: 2
 --- !u!64 &5493680682879508377
 MeshCollider:
@@ -128,3 +128,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: 0
   column: 3
+  AIPieceMaterial: {fileID: 2100000, guid: 5e90e553675a89e46a45e99ab620f29a, type: 2}
+  playerPieceMaterial: {fileID: 2100000, guid: f4f01859aee03cf4da70ceca9f210fd1, type: 2}
+  hasReachedFinalPlace: 0

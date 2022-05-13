@@ -12,6 +12,10 @@ public class Piece : MonoBehaviour
     // Column in which this piece will be or has been released to
     public int column = 3;
 
+    // Materials to be used by pieces to visually differentiate player and AI ones
+    public Material AIPieceMaterial;
+    public Material playerPieceMaterial;
+
     // Reference to the attached rigidbody
     private Rigidbody rigid;
 
@@ -19,8 +23,9 @@ public class Piece : MonoBehaviour
     private bool isReleased = false;
 
     // Has this piece reached its final position in the board (bottom of the board or above another piece)
-    private bool hasReachedFinalPlace = false;
+    public bool hasReachedFinalPlace = false;
 
+    private GameManager GameManager;
 
     void Awake()
     {
@@ -69,15 +74,30 @@ public class Piece : MonoBehaviour
         rigid.useGravity = true;
         isReleased = true;
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        hasReachedFinalPlace = true;
+    }
     // Tell that piece who owns it and update its visual appearence consequently
     public void setOwner(Connect4Game.Owner owner)
     {
         // Update owner
         this.owner = owner;
+        
 
         // TODO: Assign the correct material to the piece renderer
-    }
+        if (this.owner == Connect4Game.Owner.PLAYER)
+        {
+            var x = gameObject.GetComponent<Material>();
+            x = playerPieceMaterial;
+        }
+        else if (this.owner == Connect4Game.Owner.AI)
+        {
+            var x = gameObject.GetComponent<Material>();
+            x = AIPieceMaterial;
+            
+        }
 
-    // TODO: Detect When the piece reached its final place and trigger next turn
+        // TODO: Detect When the piece reached its final place and trigger next turn
+    }
 }
