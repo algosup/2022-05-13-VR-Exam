@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Piece : MonoBehaviour
 {
@@ -81,6 +82,12 @@ public class Piece : MonoBehaviour
         this.owner = owner;
 
         // TODO: Assign the correct material to the piece renderer
+
+        if (owner == PLAYER)
+            Material = Player.Piece.Material;
+
+        if (owner == AI)
+            Material = AI.Piece.Material;
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
