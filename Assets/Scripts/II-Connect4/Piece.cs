@@ -76,4 +76,16 @@ public class Piece : MonoBehaviour
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
+    public void OnCollisionEnter(Collision collision)
+    {
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            //print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
+            if(contact.otherCollider.name == "BottomCollider" || contact.otherCollider.name == "Piece(Clone)")
+            {
+                GameManager.instance.NextTurn();
+            }
+        }
+    }
+
 }
