@@ -44,6 +44,8 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
+        this.transform.position = new Vector3(newX,this.transform.position.y,this.transform.position.z);
+
         // TODO: update piece position
     }
 
@@ -57,6 +59,7 @@ public class Piece : MonoBehaviour
         float newX = (column - 3) * COLUMN_WIDTH;
 
         // TODO: update piece position
+        this.transform.position = new Vector3(newX, this.transform.position.y, this.transform.position.z);
     }
 
     // Release the piece so it drops in the column
