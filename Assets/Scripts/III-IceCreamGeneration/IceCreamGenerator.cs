@@ -9,6 +9,8 @@ public class IceCreamGenerator : MonoBehaviour
     public float height = 6.0f;
     [Range(0, 250)]
     public int revolutionResolution = 40;
+    [Tooltip("Factor of how much the height of the cone changes, creating ripples.")]
+    public float rippleFactor = 0.02f;
 
     // 'prev' variables to detect changes over time on original variables
     float prevRadius;
@@ -56,8 +58,6 @@ public class IceCreamGenerator : MonoBehaviour
     }
 
     // This function generates an ice cream cornet mesh and apply it to the MeshFilter of that GameObject
-    // TODO: Triangles and UVs are being calculated, but vertices are missing. Complete this function with vertices calculation
-    // to fully generate the ice cream cornet
     public void GenerateIceCream(float radius, float height, int resolution)
     {
         // Mesh generation
@@ -69,17 +69,30 @@ public class IceCreamGenerator : MonoBehaviour
         int[] tris = new int[resolution * 2 * 3];
         Vector2[] uvs = new Vector2[resolution + 2];
 
+        vertices[resolution] = Vector3.zero; // Tip the ice cone
+        vertices[resolution + 1] = new Vector3(0, height, 0); // Center of the circle
         uvs[resolution] = new Vector2(0.5f, 0);
         uvs[resolution + 1] = new Vector2(0.5f, 1);
         for(int i = 0; i < resolution; i++)
         {
             float theta = i * 2 * Mathf.PI / resolution;
+            float yfactor = 1f + rippleFactor * Random.value; 
 
-            // Triangles calcuation
+            // Vertices calculation
+            vertices[i] = new Vector3(
+                radius * Mathf.Cos(theta),
+                height * yfactor,
+                radius * Mathf.Sin(theta)
+            );
+
+            // Triangles calcuation (Ice)
             tris[6 * i] = resolution;
             tris[6 * i + 1] = i;
             tris[6 * i + 2] = ((i + 1) % resolution);
 
+            // Triangles calcuation (Cone)
+            // TODO: Have the texture of the cone not be shrunk down
+            // by the ripples from the top of the cone.
             tris[6 * i + 3] = resolution + 1;
             tris[6 * i + 4] = ((i + 1) % resolution);
             tris[6 * i + 5] = i;
