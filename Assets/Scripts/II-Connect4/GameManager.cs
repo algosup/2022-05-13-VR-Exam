@@ -106,8 +106,8 @@ public class GameManager : MonoBehaviour
         //iprovisation
         if (NextTurnTrigger)
         {
-            NextTurn();
             NextTurnTrigger = false;
+            NextTurn();
         }
     }
 
