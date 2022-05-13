@@ -21,6 +21,7 @@ public class Piece : MonoBehaviour
     // Has this piece reached its final position in the board (bottom of the board or above another piece)
     private bool hasReachedFinalPlace = false;
 
+    private Vector3 initialPos;
 
     void Awake()
     {
@@ -44,7 +45,8 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        // TODO: update piece position
+        transform.localPosition = new Vector3(newX, transform.localPosition.y, transform.localPosition.z);
+
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -56,7 +58,7 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        // TODO: update piece position
+        transform.localPosition = new Vector3(newX, transform.localPosition.y, transform.localPosition.z);
     }
 
     // Release the piece so it drops in the column
@@ -77,4 +79,8 @@ public class Piece : MonoBehaviour
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
+
+    private void Start() {
+         initialPos = transform.localPosition;
+    }
 }
