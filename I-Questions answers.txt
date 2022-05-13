@@ -1,7 +1,7 @@
 Write your answers to the 3 questions below
 
-1.
+1. The users can be motion sick very easily with a vr headset compared to a regular 3D game 
 
-2.
+2. B. LIDAR
 
-3.
+3. B. Passive Stereoscopy
