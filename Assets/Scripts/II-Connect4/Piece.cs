@@ -26,6 +26,7 @@ public class Piece : MonoBehaviour
     {
         // Get rigidbody component
         rigid = GetComponent<Rigidbody>();
+
     }
 
     // Can the user move this piece with arrow keys?
@@ -45,6 +46,8 @@ public class Piece : MonoBehaviour
         float newX = (column - 3) * COLUMN_WIDTH;
 
         // TODO: update piece position
+        transform.Translate(1f, 0f, 0f);
+
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -57,6 +60,7 @@ public class Piece : MonoBehaviour
         float newX = (column - 3) * COLUMN_WIDTH;
 
         // TODO: update piece position
+        transform.Translate(-1f, 0f, 0f);
     }
 
     // Release the piece so it drops in the column
@@ -74,6 +78,14 @@ public class Piece : MonoBehaviour
         this.owner = owner;
 
         // TODO: Assign the correct material to the piece renderer
+        //if (playerPieceMaterial)
+        //{
+            
+        //}
+        //if(AIPieceMaterial)
+        //{
+
+        //}
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
