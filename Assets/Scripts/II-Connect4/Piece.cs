@@ -90,7 +90,7 @@ public class Piece : MonoBehaviour
         if(hasReachedFinalPlace == true)
         {
             rigid.constraints = RigidbodyConstraints.FreezePosition;
-            setOwner(Connect4Game.Owner.PLAYER);
+            
         }
     } 
 
