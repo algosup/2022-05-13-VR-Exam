@@ -14,12 +14,17 @@ public class Piece : MonoBehaviour
 
     // Reference to the attached rigidbody
     private Rigidbody rigid;
+    private Material material;
 
     // Has this piece been released yet?
     private bool isReleased = false;
 
     // Has this piece reached its final position in the board (bottom of the board or above another piece)
     private bool hasReachedFinalPlace = false;
+
+    public Material materialIA;
+    public Material materialPlayer;
+
 
 
     void Awake()
@@ -43,8 +48,7 @@ public class Piece : MonoBehaviour
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
-
-        // TODO: update piece position
+        rigid.MovePosition(new Vector3(0,rigid.position.y, 0) + Vector3.right * newX);
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -55,8 +59,7 @@ public class Piece : MonoBehaviour
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
-
-        // TODO: update piece position
+        rigid.MovePosition(new Vector3(0,rigid.position.y, 0) + Vector3.right * newX);
     }
 
     // Release the piece so it drops in the column
@@ -74,7 +77,18 @@ public class Piece : MonoBehaviour
         this.owner = owner;
 
         // TODO: Assign the correct material to the piece renderer
+        //! Should have worked but unity.
+        material = GetComponent<Material>();
+        if(owner == Connect4Game.Owner.PLAYER)
+            material = materialPlayer;
+        else
+            material = materialIA;
     }
 
-    // TODO: Detect When the piece reached its final place and trigger next turn
+    //// Detect When the piece reached its final place and trigger next turn
+    public bool finalPlace()
+    {
+        hasReachedFinalPlace = (rigid.velocity.y == 0 && isReleased && rigid.position.y < 7.0f);
+        return hasReachedFinalPlace;
+    }
 }

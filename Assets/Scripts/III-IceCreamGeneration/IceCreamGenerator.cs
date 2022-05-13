@@ -75,6 +75,17 @@ public class IceCreamGenerator : MonoBehaviour
         {
             float theta = i * 2 * Mathf.PI / resolution;
 
+/*
+x(theta) = r cos theta
+y(theta) = r sin theta
+z(thata) = h
+*/
+            vertices[i] = new Vector3(
+                (radius * Mathf.Cos(theta)),
+                (height),
+                (radius * Mathf.Sin(theta))
+            );
+
             // Triangles calcuation
             tris[6 * i] = resolution;
             tris[6 * i + 1] = i;
@@ -109,5 +120,4 @@ public class IceCreamGenerator : MonoBehaviour
         // Apply the newly created mesh to the MeshFilter
         meshFilter.mesh = mesh;
     }
-
 }

@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
 
         // TO REMOVE when next turn is triggered by a piece reaching its final place
         // Temporary going to next turn when pressing tab
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (currentPiece.finalPlace())
             NextTurn();
     }
 
