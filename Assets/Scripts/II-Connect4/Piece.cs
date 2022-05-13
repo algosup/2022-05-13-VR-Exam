@@ -48,9 +48,9 @@ public class Piece : MonoBehaviour
 
         // TODO: update piece position
 
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKey(KeyCode.R) && column < 0)
         {
-            newX.transform.transform.localPosition = new Vector3(0., 0., 0);
+            rigid.transform.transform.localPosition = rigid.transform + newX;
         }
 
     }
@@ -84,7 +84,7 @@ public class Piece : MonoBehaviour
         // TODO: Assign the correct material to the piece renderer
 
         if (owner == PLAYER)
-            Material = Player.Piece.Material;
+            Material = player.Piece.Material;
 
         if (owner == AI)
             Material = AI.Piece.Material;
