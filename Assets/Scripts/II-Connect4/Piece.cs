@@ -43,8 +43,9 @@ public class Piece : MonoBehaviour
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
-
-        // TODO: update piece position
+        
+        Vector3 newPos = new Vector3(newX,rigid.transform.position.y,rigid.transform.position.z);
+        rigid.gameObject.transform.SetPositionAndRotation(newPos,rigid.transform.rotation);
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -56,7 +57,8 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        // TODO: update piece position
+        Vector3 newPos = new Vector3(newX,rigid.transform.position.y,rigid.transform.position.z);
+        rigid.gameObject.transform.SetPositionAndRotation(newPos,rigid.transform.rotation);
     }
 
     // Release the piece so it drops in the column
