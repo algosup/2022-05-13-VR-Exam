@@ -44,9 +44,9 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        // if (Input.GetKey(KeyCode.RightArrow) && newX <= column){
-        //     newX + COLUMN_WIDTH;
-        // }
+        if (column < 6){
+            newX -= column;
+        }
         // TODO: update piece position
     }
 
@@ -59,9 +59,9 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        // if (Input.GetKey(KeyCode.LeftArrow) && newX >= column){
-        //     newX + COLUMN_WIDTH;
-        // }
+        if (column > 0){
+            newX -= COLUMN_WIDTH;
+        }
         // TODO: update piece position
     }
 
