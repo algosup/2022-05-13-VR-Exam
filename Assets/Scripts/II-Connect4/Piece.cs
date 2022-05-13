@@ -19,6 +19,8 @@ public class Piece : MonoBehaviour
 
     private GameManager gameManager;
 
+    private MeshCollider collider;
+
 
     // Has this piece been released yet?
     private bool isReleased = false;
@@ -70,8 +72,13 @@ public class Piece : MonoBehaviour
     public void Release()
     {
         // Apply gravity to it and update isReleased state
-        rigid.useGravity = true;
+        rigid = GetComponent<Rigidbody>();
+        collider = GetComponent<MeshCollider>();
+
+        
         isReleased = true;
+        collider.enabled = false;
+        rigid.useGravity = true;
     }
 
     // Tell that piece who owns it and update its visual appearence consequently
