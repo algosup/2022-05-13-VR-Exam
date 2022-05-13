@@ -88,7 +88,7 @@ public class Piece : MonoBehaviour
     // TODO: Detect When the piece reached its final place and trigger next 
     // I don't remember the exact name of the fuction 
     // Lacks the detection on another piece
-    private void onCollide(Collider other){
+    private void onCollision(Collider other){
         if(other.tag == "BottomCollider"){
             hasReachedFinalPlace = true;
             GameManager.instance.NextTurn();
