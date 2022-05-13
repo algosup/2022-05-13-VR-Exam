@@ -45,6 +45,11 @@ public class Piece : MonoBehaviour
         float newX = (column - 3) * COLUMN_WIDTH;
 
         // TODO: update piece position
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.localPosition += new Vector3(COLUMN_WIDTH, 0, 0);
+        }
     }
 
     // Move the piece above the next column on the left (if exists)
