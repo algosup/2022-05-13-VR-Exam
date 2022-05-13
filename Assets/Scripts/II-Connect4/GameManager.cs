@@ -141,6 +141,7 @@ public class GameManager : MonoBehaviour
 
         }
         FinalUI.SetActive(true);
+        FinalUI.GetComponent<Animator>().SetBool("Victory", true);
         isGameRunning = false;
     }
 
