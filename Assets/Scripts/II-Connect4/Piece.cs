@@ -39,13 +39,13 @@ public class Piece : MonoBehaviour
     public void MoveRight()
     {
         // Limit the column to 6 max
-        column = Mathf.Min(column+1, 6);
+        column = Mathf.Min(column + 1, 6);
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        if (column < 6){
-            newX -= column;
+        if (newX < 6){
+            newX = column + COLUMN_WIDTH;
         }
         // TODO: update piece position
     }
@@ -59,8 +59,8 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        if (column > 0){
-            newX -= COLUMN_WIDTH;
+        if (newX > 0){
+            newX = column - COLUMN_WIDTH;
         }
         // TODO: update piece position
     }
@@ -78,10 +78,12 @@ public class Piece : MonoBehaviour
     {
         // Update owner
         // this.owner = owner;
-        // if (owner = Connect4Game.Owner.PLAYER);
-        //     currentPiece.material =
-        // if (owner = Connect4Game.Owner.AI);
-        //     currentPiece.material
+        // if (owner = Connect4Game.Owner.PLAYER);{
+        //     currentPiece.GetMaterial = playerPieceMaterial;
+        // }
+        // if (owner = Connect4Game.Owner.AI);{
+        //     currentPiece.material = AIPieceMaterial;
+        // }
         // TODO: Assign the correct material to the piece renderer
     }
 
