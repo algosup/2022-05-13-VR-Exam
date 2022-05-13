@@ -1,7 +1,7 @@
 Write your answers to the 3 questions below
 
-1.
+1. - You render 2 times from 2 different point of view.
 
-2.
+2. SLAM
 
-3.
+3. Passive stereoscopy
