@@ -53,7 +53,6 @@ public class Piece : MonoBehaviour
     {
         // Limit the column to 0 min
         column = Mathf.Max(column - 1, 0);
-        print(column);
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
