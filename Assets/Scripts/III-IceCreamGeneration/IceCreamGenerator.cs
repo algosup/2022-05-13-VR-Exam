@@ -88,6 +88,7 @@ public class IceCreamGenerator : MonoBehaviour
             uvs[i] = new Vector2(Mathf.Abs(i / (float) resolution - 0.5f)+0.5f, 0.8f);
         }
         #endregion
+
         mesh.vertices = vertices;
         mesh.triangles = tris;
         mesh.uv = uvs;

@@ -38,30 +38,41 @@ public class Piece : MonoBehaviour
     // Move the piece above the next column on the right (if exists)
     public void MoveRight()
     {
-        // Limit the column to 6 max
-        column = Mathf.Min(column+1, 6);
+          if (Input.GetKeyDown(KeyCode.RightArrow)&& transform.position.x < column+3)
+        {
+            // Limit the column to 6 max
+            column = Mathf.Min(column+3, 6);
+         
+            // New x position of the piece
+            float newX = (column) * COLUMN_WIDTH;
 
-        // New x position of the piece
-        float newX = (column - 3) * COLUMN_WIDTH;
+            transform.position += new Vector3(newX ,0, 0);
+        }
 
-        // TODO: update piece position
     }
 
     // Move the piece above the next column on the left (if exists)
     public void MoveLeft()
-    {
-        // Limit the column to 0 min
-        column = Mathf.Max(column - 1, 0);
+    { 
+        
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > column-3)
+        {
+        column = Mathf.Max(column-3, 0);
+        
+        
+            // Limit the column to 0 min
+           
 
-        // New x position of the piece
-        float newX = (column - 3) * COLUMN_WIDTH;
+            // New x position of the piece
+            float newX = (column-1) * COLUMN_WIDTH;
 
-        // TODO: update piece position
+            transform.position += new Vector3(newX, 0, 0);
+        }
     }
-
     // Release the piece so it drops in the column
     public void Release()
     {
+        if(Input.GetKeyDown(KeyCode.Space))
         // Apply gravity to it and update isReleased state
         rigid.useGravity = true;
         isReleased = true;
