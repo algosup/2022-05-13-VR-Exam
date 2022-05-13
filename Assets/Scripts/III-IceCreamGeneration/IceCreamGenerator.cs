@@ -63,7 +63,8 @@ public class IceCreamGenerator : MonoBehaviour
         // Mesh generation
         Mesh mesh = new Mesh();
 
-        // TODO: Add vertices calculations
+        // TODO: Add vertices calculation
+        
         #region Vertices calculation
         Vector3[] vertices = new Vector3[resolution + 2];
         int[] tris = new int[resolution * 2 * 3];
@@ -86,6 +87,11 @@ public class IceCreamGenerator : MonoBehaviour
                 
             // UVs calculation
             uvs[i] = new Vector2(Mathf.Abs(i / (float) resolution - 0.5f)+0.5f, 0.8f);
+
+            // Vertices calculation
+            vertices[i] = resolution * Mathf.Cos() * theta;
+            vertices[i] = new Vector3();
+            vertices[i] = resolution * Mathf.Sin() * theta;
         }
         #endregion
         mesh.vertices = vertices;
