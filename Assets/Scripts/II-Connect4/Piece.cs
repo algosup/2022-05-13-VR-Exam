@@ -91,5 +91,9 @@ public class Piece : MonoBehaviour
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
-    
+    void ChangeTurn()
+    {
+        if (hasReachedFinalPlace == true)
+            GameManager.NextTurn();
+    }
 }
