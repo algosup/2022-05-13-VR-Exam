@@ -21,6 +21,9 @@ public class Piece : MonoBehaviour
     // Has this piece reached its final position in the board (bottom of the board or above another piece)
     private bool hasReachedFinalPlace = false;
 
+    // Game manager that spawned the piece
+    private GameManager gameManager;
+
 
     void Awake()
     {
@@ -79,8 +82,31 @@ public class Piece : MonoBehaviour
         // Update owner
         this.owner = owner;
 
-        // TODO: Assign the correct material to the piece renderer
-    }
+		// Assign the correct material to the piece renderer
+		switch (owner) {
+			case Connect4Game.Owner.PLAYER:
+                // TODO
+				break;
+			case Connect4Game.Owner.AI:
+                // TODO
+				break;
+			default:
+                Debug.LogError("Unkown piece material.");
+                // TODO
+				break;
+		}
+	}
 
-    // TODO: Detect When the piece reached its final place and trigger next turn
+    public void setGameManager(GameManager gameManager) {
+        this.gameManager = gameManager;
+	}
+
+	// Detect When the piece reached its final place and trigger next turn
+    private void OnCollisionEnter(Collision collision) {
+		float force = collision.impulse.y;
+		if (!hasReachedFinalPlace & force > 3f) {
+			hasReachedFinalPlace = true;
+			gameManager.NextTurn();
+		}
+	}
 }
