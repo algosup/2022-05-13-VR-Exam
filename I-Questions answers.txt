@@ -1,7 +1,10 @@
 Write your answers to the 3 questions below
 
 1.
+The movement handling is different. On a regular app, it is done with keyboard+mouse or with a controller but here the interface is the VR gloves and headset.
 
 2.
+This system is LIDAR. HDM means Head Mounted Device, i.e. the headset.
 
 3.
+B. Passive stereoscopy: The filter is the color of the lenses.
