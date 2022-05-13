@@ -44,7 +44,7 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        // TODO: update piece position
+        transform.position = new Vector3(newX, transform.position.y, transform.position.z);
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -56,7 +56,7 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        // TODO: update piece position
+        transform.position = new Vector3(newX, transform.position.y, transform.position.z);
     }
 
     // Release the piece so it drops in the column
