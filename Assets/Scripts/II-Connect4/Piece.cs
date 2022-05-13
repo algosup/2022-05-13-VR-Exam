@@ -22,7 +22,7 @@ public class Piece : MonoBehaviour
     private bool isReleased = false;
 
     // Has this piece reached its final position in the board (bottom of the board or above another piece)
-    private bool hasReachedFinalPlace = false;
+    public bool hasReachedFinalPlace = false;
 
 
     void Awake()
@@ -91,4 +91,11 @@ public class Piece : MonoBehaviour
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
+    private void OnCollisionEnter(Collision collision)
+    {
+        if( collision.gameObject.name == "BottomCollider" || collision.gameObject.name == "Piece(Clone)")
+        {
+            hasReachedFinalPlace = true;
+        }
+    }
 }
