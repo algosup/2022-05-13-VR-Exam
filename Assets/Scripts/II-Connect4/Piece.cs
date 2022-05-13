@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
+
+    public GameManager manager;
+
     // Width of a column in the board
     private const float COLUMN_WIDTH = 1f;
 
@@ -74,8 +77,17 @@ public class Piece : MonoBehaviour
     {
         // Update owner
         this.owner = owner;
+        Renderer mat = GetComponent<Renderer>();
+        
+        if(owner == Connect4Game.Owner.PLAYER)
+        {
+            mat.material = manager.playerPieceMaterial;
+        }
+        else
+        {
+            mat.material = manager.AIPieceMaterial;
+        }
 
-        // TODO: Assign the correct material to the piece renderer
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn

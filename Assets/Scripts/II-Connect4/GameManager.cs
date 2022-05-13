@@ -66,7 +66,9 @@ public class GameManager : MonoBehaviour
     {
         // Create a new piece and update its ownership (for logic and visual)
         currentPiece = Instantiate(piecePrefab, piecesContainer).GetComponent<Piece>();
+        currentPiece.manager = GetComponent<GameManager>();
         currentPiece.setOwner(playerTurn? Connect4Game.Owner.PLAYER : Connect4Game.Owner.AI);
+        
 
         // If it's AI turn, select a random column from the avaialble ones (not very strategic AI) and simulate its actions
         if (!playerTurn)

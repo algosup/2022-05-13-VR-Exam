@@ -3,7 +3,13 @@ guid: 1b11a1e1bf254b74aa92f1d886383660
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - AIPieceMaterial: {fileID: 2100000, guid: f4f01859aee03cf4da70ceca9f210fd1, type: 2}
+  - playerPieceMaterial: {fileID: 2100000, guid: 5e90e553675a89e46a45e99ab620f29a, type: 2}
+  - piecePrefab: {fileID: 4682636028588614346, guid: 74bf2dd859e565c40ac5900638b44ffd, type: 3}
+  - piecesContainer: {instanceID: 0}
+  - FinalUI: {instanceID: 0}
+  - finalUIText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
