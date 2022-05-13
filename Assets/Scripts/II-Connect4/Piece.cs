@@ -45,6 +45,10 @@ public class Piece : MonoBehaviour
         float newX = (column - 3) * COLUMN_WIDTH;
 
         // TODO: update piece position
+        if (Input.GetKey(KeyCode.RightArrow) && newX >= 0)
+        {
+            transform.Translate(COLUMN_WIDTH, 0f, 0f);
+        }        
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -57,6 +61,10 @@ public class Piece : MonoBehaviour
         float newX = (column - 3) * COLUMN_WIDTH;
 
         // TODO: update piece position
+        if (Input.GetKey(KeyCode.LeftArrow) && newX <= 0)
+        {           
+           transform.Translate(-COLUMN_WIDTH, 0f, 0f);  
+        }
     }
 
     // Release the piece so it drops in the column
@@ -74,6 +82,7 @@ public class Piece : MonoBehaviour
         this.owner = owner;
 
         // TODO: Assign the correct material to the piece renderer
+        
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
