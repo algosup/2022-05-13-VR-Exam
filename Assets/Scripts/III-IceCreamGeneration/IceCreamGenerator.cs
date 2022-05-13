@@ -64,6 +64,9 @@ public class IceCreamGenerator : MonoBehaviour
         Mesh mesh = new Mesh();
 
         // TODO: Add vertices calculations
+
+
+
         #region Vertices calculation
         Vector3[] vertices = new Vector3[resolution + 2];
         int[] tris = new int[resolution * 2 * 3];
@@ -71,9 +74,15 @@ public class IceCreamGenerator : MonoBehaviour
 
         uvs[resolution] = new Vector2(0.5f, 0);
         uvs[resolution + 1] = new Vector2(0.5f, 1);
+
+        vertices[resolution] = new Vector3(0, 0, 0);
+        vertices[resolution + 1] = new Vector3(0, height, 0);
+
         for(int i = 0; i < resolution; i++)
         {
             float theta = i * 2 * Mathf.PI / resolution;
+            // Vertices calculation
+            vertices[i] = new Vector3(radius * Mathf.Cos(theta), height, radius * Mathf.Sin(theta));
 
             // Triangles calcuation
             tris[6 * i] = resolution;
@@ -88,6 +97,8 @@ public class IceCreamGenerator : MonoBehaviour
             uvs[i] = new Vector2(Mathf.Abs(i / (float) resolution - 0.5f)+0.5f, 0.8f);
         }
         #endregion
+
+
         mesh.vertices = vertices;
         mesh.triangles = tris;
         mesh.uv = uvs;
