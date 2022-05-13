@@ -14,6 +14,7 @@ public class Piece : MonoBehaviour
 
     // Reference to the attached rigidbody
     private Rigidbody rigid;
+    private Material material;
 
     // Has this piece been released yet?
     private bool isReleased = false;
@@ -45,6 +46,7 @@ public class Piece : MonoBehaviour
         float newX = (column - 3) * COLUMN_WIDTH;
 
         // TODO: update piece position
+        rigid.MovePosition(transform.position.newX);
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -57,6 +59,7 @@ public class Piece : MonoBehaviour
         float newX = (column - 3) * COLUMN_WIDTH;
 
         // TODO: update piece position
+        rigid.MovePosition(transform.position.newX);
     }
 
     // Release the piece so it drops in the column
@@ -74,7 +77,16 @@ public class Piece : MonoBehaviour
         this.owner = owner;
 
         // TODO: Assign the correct material to the piece renderer
+        playerPieceMaterial = material.GetComponent<RedPiece>();
+        AIPieceMaterial = material.GetComponent<YellowPiece>();
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
+    public void finalPlace()
+    {
+        if (hasReachedFinalPlace = true) 
+        {
+            
+        }
+    }
 }
