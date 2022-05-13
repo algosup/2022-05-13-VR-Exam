@@ -74,11 +74,21 @@ public class Piece : MonoBehaviour
     {
         // Update owner
         this.owner = owner;
-
-        // TODO: Assign the correct material to the piece renderer
+        var pieceRenderer = GetComponent<Renderer>();
+        if(owner == Connect4Game.Owner.PLAYER)
+        {
+            pieceRenderer.material.SetColor("_Color", Color.yellow);
+            
+        }
+        else if(owner == Connect4Game.Owner.AI)
+        {
+            pieceRenderer.material.SetColor("_Color", Color.red);
+        }
     }
 
-    // TODO: Detect When the piece reached its final place and trigger next turn
+    // public void detectReachedFinalPlace(){ // TODO: Detect When the piece reached its final place and trigger next turn
+    //     if()
+    // } 
 
     private void Start() {
          initialPos = transform.localPosition;
