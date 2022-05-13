@@ -43,8 +43,11 @@ public class Piece : MonoBehaviour
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
-
         // TODO: update piece position
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            gameObject.transform.localPosition = new Vector3(newX, -0.067f, 0.009f);
+        }
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -57,6 +60,9 @@ public class Piece : MonoBehaviour
         float newX = (column - 3) * COLUMN_WIDTH;
 
         // TODO: update piece position
+        if (Input.GetKey(KeyCode.LeftArrow)) {
+            gameObject.transform.localPosition = new Vector3(newX, -0.067f, 0.009f);
+        }
     }
 
     // Release the piece so it drops in the column
