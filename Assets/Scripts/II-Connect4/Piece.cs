@@ -46,7 +46,7 @@ public class Piece : MonoBehaviour
         // TODO: update piece position
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            gameObject.transform.localPosition = new Vector3(newX, -0.067f, 0.009f);
+            gameObject.transform.localPosition = new Vector3(newX, 0, 0);
         }
     }
 
@@ -61,7 +61,7 @@ public class Piece : MonoBehaviour
 
         // TODO: update piece position
         if (Input.GetKey(KeyCode.LeftArrow)) {
-            gameObject.transform.localPosition = new Vector3(newX, -0.067f, 0.009f);
+            gameObject.transform.localPosition = new Vector3(newX, 0,0);
         }
     }
 
@@ -80,6 +80,8 @@ public class Piece : MonoBehaviour
         this.owner = owner;
 
         // TODO: Assign the correct material to the piece renderer
+    
+
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
