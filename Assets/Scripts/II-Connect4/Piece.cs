@@ -21,7 +21,6 @@ public class Piece : MonoBehaviour
     // Has this piece reached its final position in the board (bottom of the board or above another piece)
     private bool hasReachedFinalPlace = false;
 
-
     void Awake()
     {
         // Get rigidbody component
@@ -43,7 +42,7 @@ public class Piece : MonoBehaviour
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
-        
+
         Vector3 newPos = new Vector3(newX,rigid.transform.position.y,rigid.transform.position.z);
         rigid.gameObject.transform.SetPositionAndRotation(newPos,rigid.transform.rotation);
     }
@@ -56,7 +55,6 @@ public class Piece : MonoBehaviour
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
-
         Vector3 newPos = new Vector3(newX,rigid.transform.position.y,rigid.transform.position.z);
         rigid.gameObject.transform.SetPositionAndRotation(newPos,rigid.transform.rotation);
     }
@@ -76,6 +74,18 @@ public class Piece : MonoBehaviour
         this.owner = owner;
 
         // TODO: Assign the correct material to the piece renderer
+
+        Material newmat;
+        if(owner == Connect4Game.Owner.AI)
+        {
+            newmat = GameManager.instance.AIPieceMaterial;
+        }
+        else
+        {
+            newmat = GameManager.instance.playerPieceMaterial;
+
+        }
+        rigid.gameObject.GetComponent<MeshRenderer>().material = newmat;
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
