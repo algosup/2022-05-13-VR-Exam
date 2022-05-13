@@ -1,7 +1,7 @@
 Write your answers to the 3 questions below
 
-1.
+1. Generally, in a simple 3d app, you only got one camera. And for a VR app, you need 2 cameras which follow your eyes.
 
-2.
+2. SLAM
 
-3.
+3. Passive stereoscopy (separation by filter)

@@ -21,6 +21,11 @@ public class Piece : MonoBehaviour
     // Has this piece reached its final position in the board (bottom of the board or above another piece)
     private bool hasReachedFinalPlace = false;
 
+    public Material AIPieceMaterial;
+
+    public Material playerPieceMaterial;
+
+    private Piece currentPiece;
 
     void Awake()
     {
@@ -39,7 +44,7 @@ public class Piece : MonoBehaviour
     public void MoveRight()
     {
         // Limit the column to 6 max
-        column = Mathf.Min(column+1, 6);
+        column = Mathf.Min(column + 1, 6);
 
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
@@ -72,9 +77,16 @@ public class Piece : MonoBehaviour
     {
         // Update owner
         this.owner = owner;
+        if (Connect4Game.Owner.PLAYER == owner)
+            NewTurn(true);
 
         // TODO: Assign the correct material to the piece renderer
-    }
+        void NewTurn(bool playerTurn)
+        {
+            // Create a new piece and update its ownership (for logic and visual)
+            currentPiece.setOwner(playerTurn ? Connect4Game.Owner.PLAYER : Connect4Game.Owner.AI);
+        }
 
-    // TODO: Detect When the piece reached its final place and trigger next turn
+        // TODO: Detect When the piece reached its final place and trigger next turn
+    }
 }
