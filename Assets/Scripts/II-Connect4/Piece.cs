@@ -15,6 +15,7 @@ public class Piece : MonoBehaviour
 
     // Owner of that piece
     public Connect4Game.Owner owner;
+
     // Column in which this piece will be or has been released to
     public int column = 3;
 
@@ -48,9 +49,7 @@ public class Piece : MonoBehaviour
         column = Mathf.Min(column+1, 6);
 
         // New x position of the piece
-        float newX = (column - 2) * COLUMN_WIDTH;
-
-        // TODO: update piece position
+        float newX = (column - 4) * COLUMN_WIDTH;
 
         if (Input.GetKey(KeyCode.RightArrow) && transform.position.x <= newX)
         {
@@ -67,12 +66,10 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 2) * COLUMN_WIDTH;
 
-
         if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x >= newX)
         {
             transform.Translate((COLUMN_WIDTH * -1), 0f, 0f);
         }
-        // TODO: update piece position
     }
 
     // Release the piece so it drops in the column

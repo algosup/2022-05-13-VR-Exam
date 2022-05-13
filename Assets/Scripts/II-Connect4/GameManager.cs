@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         currentPiece = Instantiate(piecePrefab, piecesContainer).GetComponent<Piece>();
         currentPiece.setOwner(playerTurn? Connect4Game.Owner.PLAYER : Connect4Game.Owner.AI);
 
-        // If it's AI turn, select a random column from the avaialble ones (not very strategic AI) and simulate its actions
+        // If it's AI turn, select a random column from the available ones (not very strategic AI) and simulate its actions
         if (!playerTurn)
         {
             List<int> availablesColumns = game.getAvailableColumns();

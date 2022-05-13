@@ -1,7 +1,8 @@
 Write your answers to the 3 questions below
 
-1.
+1.A VR app need to be smooth, if we don't want some motion sickness and provide a bette user experience, we also use 2 screens, here is it a big difference between a standard flat screen 3D app.
 
-2.
 
-3.
+2.LIDAR
+
+3.The stereoscopy implemented into the anaglyph glasses, is a separation by filter(Passive Stereoscopy), it is a separation by filter because at the screen, there is 2 images(a red image and a blue image) at the same time.
