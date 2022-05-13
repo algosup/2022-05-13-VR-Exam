@@ -56,14 +56,14 @@ public class IceCreamGenerator : MonoBehaviour
     }
 
     // This function generates an ice cream cornet mesh and apply it to the MeshFilter of that GameObject
-    // TODO: Triangles and UVs are being calculated, but vertices are missing. Complete this function with vertices calculation
+    //// Triangles and UVs are being calculated, but vertices are missing. Complete this function with vertices calculation
     // to fully generate the ice cream cornet
     public void GenerateIceCream(float radius, float height, int resolution)
     {
         // Mesh generation
         Mesh mesh = new Mesh();
 
-        // TODO: Add vertices calculations
+        //// Add vertices calculations
         #region Vertices calculation
         Vector3[] vertices = new Vector3[resolution + 2];
         int[] tris = new int[resolution * 2 * 3];
