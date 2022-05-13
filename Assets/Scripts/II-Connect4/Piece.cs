@@ -44,6 +44,9 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
+        this.transform.position = new Vector3(newX, this.transform.position.y, this.transform.position.z);
+
+
         // TODO: update piece position
     }
 
@@ -56,12 +59,16 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
+        this.transform.position = new Vector3(newX, this.transform.position.y, this.transform.position.z);
+
         // TODO: update piece position
     }
 
     // Release the piece so it drops in the column
     public void Release()
     {
+        var meshcol = this.GetComponent<MeshCollider>();
+        meshcol.isTrigger = true;
         // Apply gravity to it and update isReleased state
         rigid.useGravity = true;
         isReleased = true;
@@ -72,9 +79,22 @@ public class Piece : MonoBehaviour
     {
         // Update owner
         this.owner = owner;
+        var mat = this.GetComponent<MeshRenderer>();
+       // mat.material = "YellowPiece";
+        
 
         // TODO: Assign the correct material to the piece renderer
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
+   
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.name != "Colliders")
+        {
+            var meshcol = this.GetComponent<MeshCollider>();
+            meshcol.isTrigger = false;
+            GameManager.instance.NextTurn();
+        }
+    }
 }
