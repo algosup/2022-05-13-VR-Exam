@@ -73,8 +73,23 @@ public class Piece : MonoBehaviour
         // Update owner
         this.owner = owner;
 
-        // TODO: Assign the correct material to the piece renderer
+        var piceRenderer = gameObject.GetComponent<Renderer>();
+
+        if (owner == Connect4Game.Owner.PLAYER)
+        {
+            piceRenderer.material.SetColor("_Color", Color.yellow);
+        }
+        else
+        {
+            piceRenderer.material.SetColor("_Color", Color.red);
+        }
     }
 
-    // TODO: Detect When the piece reached its final place and trigger next turn
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("BottomCollider"))
+        {
+            GameManager.NextTurnTrigger = true;
+        }
+    }
 }

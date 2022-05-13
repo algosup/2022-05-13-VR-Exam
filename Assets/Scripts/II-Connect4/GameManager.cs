@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     // Reference to the piece being used in the current turn (moving/releasing above the board)
     private Piece currentPiece;
 
+    public static bool NextTurnTrigger = false;
 
     void Start()
     {
@@ -102,10 +103,12 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // TO REMOVE when next turn is triggered by a piece reaching its final place
-        // Temporary going to next turn when pressing tab
-        if (Input.GetKeyDown(KeyCode.Tab))
+        //kept just in case
+        if (NextTurnTrigger)
+        {
             NextTurn();
+            NextTurnTrigger = false;
+        }
     }
 
     // Start the next turn
