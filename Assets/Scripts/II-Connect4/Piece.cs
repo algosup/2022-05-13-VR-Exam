@@ -20,8 +20,6 @@ public class Piece : MonoBehaviour
 
     // Has this piece reached its final position in the board (bottom of the board or above another piece)
     private bool hasReachedFinalPlace = false;
-    public GameObject playerPieceMaterial;
-    public GameObject AIPieceMaterial;
 
 
     void Awake()
