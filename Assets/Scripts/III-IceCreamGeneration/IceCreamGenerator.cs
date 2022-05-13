@@ -9,8 +9,11 @@ public class IceCreamGenerator : MonoBehaviour
     public float height = 6.0f;
     [Range(0, 250)]
     public int revolutionResolution = 40;
+    [Range(0,0.5f)]
+    public float HeightVariation = 0f;
 
     // 'prev' variables to detect changes over time on original variables
+    float prevHeightVariation;
     float prevRadius;
     float prevHeight;
     int prevRes;
@@ -25,6 +28,7 @@ public class IceCreamGenerator : MonoBehaviour
     void Start()
     {
         // Initialize the 'prev' variables with parameters initial values
+        prevHeightVariation = HeightVariation;
         prevRadius = radius;
         prevHeight = height;
         prevRes = revolutionResolution;
@@ -39,7 +43,8 @@ public class IceCreamGenerator : MonoBehaviour
         // Checking if any parameter has been changed
         if (prevRadius != radius
             || prevHeight != height
-            || prevRes != revolutionResolution)
+            || prevRes != revolutionResolution
+            || prevHeightVariation != HeightVariation)
         {
             // Skip problematic resolutions (keep only power of 2 resolutions) if asked to
             if (avoidProblematicResolutions && revolutionResolution % 2 == 1)
@@ -82,7 +87,7 @@ public class IceCreamGenerator : MonoBehaviour
         {
             float theta = i * 2 * Mathf.PI / resolution;
             // Vertices calculation
-            vertices[i] = new Vector3(radius * Mathf.Cos(theta), height+(Mathf.Cos(theta*10)/10), radius * Mathf.Sin(theta));
+            vertices[i] = new Vector3(radius * Mathf.Cos(theta), height+(Mathf.Cos(theta*10)/(1/HeightVariation)), radius * Mathf.Sin(theta));
 
             // Triangles calcuation
             tris[6 * i] = resolution;
