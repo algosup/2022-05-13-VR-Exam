@@ -81,7 +81,11 @@ public class IceCreamGenerator : MonoBehaviour
                 z = (radius * (float)0.9) * Mathf.Sin(i);
             }
 
-            var vertice[] = [new Vector3(x, y, z), new Vector3(0, 0, 0)];
+            //close enough
+            Vector3[] vertice;
+            vertice[0] = new Vector3(x, y, z);
+            vertice[1] = new Vector3(0, 0, 0);
+
             Mesh.SetVertices(vertice);
         }
 
