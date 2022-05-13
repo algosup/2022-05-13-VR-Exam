@@ -87,7 +87,15 @@ public class Piece : MonoBehaviour
         this.owner = owner;
 
         // TODO: Assign the correct material to the piece renderer
-    }
+        //if (owner == 1)
+        //{
+        //    GameManager.playerPieceMaterial;
+        //}
 
+       
+    }
     // TODO: Detect When the piece reached its final place and trigger next turn
+        //public void reachFinalPlace(BottomCollider)
+        //{
+        //    NextTurn(true);
 }
