@@ -1,7 +1,8 @@
 Write your answers to the 3 questions below
 
-1.
+1. You need to make sure that the users don't get sick when using your VR app
 
-2.
+2. HMD
 
-3.
+3. Passive stereoscopy
+
