@@ -78,14 +78,14 @@ public class Piece : MonoBehaviour
         this.owner = owner;
 
         // TODO: Assign the correct material to the piece renderer
-        //if (playerPieceMaterial)
-        //{
-            
-        //}
-        //if(AIPieceMaterial)
-        //{
-
-        //}
+        if (playerPieceMaterial)
+        {
+            MeshRenderer.material = YellowPiece;
+        }
+        if (AIPieceMaterial)
+        {
+            MeshRenderer.material = RedPiece;
+        }
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
