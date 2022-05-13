@@ -19,7 +19,9 @@ public class Piece : MonoBehaviour
     private bool isReleased = false;
 
     // Has this piece reached its final position in the board (bottom of the board or above another piece)
-    private bool hasReachedFinalPlace = false;
+    public bool hasReachedFinalPlace = false;
+
+    private Transform previous;
 
     void Awake()
     {
@@ -89,4 +91,14 @@ public class Piece : MonoBehaviour
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
+    private void Update()
+    {
+        if ( isReleased
+                && !hasReachedFinalPlace
+                && rigid.gameObject.transform.position.y < 6.6f
+                && rigid.velocity == Vector3.zero )
+        {
+            hasReachedFinalPlace = true;
+        }
+    }
 }
