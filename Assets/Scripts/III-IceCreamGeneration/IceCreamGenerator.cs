@@ -73,19 +73,27 @@ public class IceCreamGenerator : MonoBehaviour
         uvs[resolution + 1] = new Vector2(0.5f, 1);
         for(int i = 0; i < resolution; i++)
         {
-            float theta = i * 2 * Mathf.PI / resolution;
+            float phi = (float)i / 2 * Mathf.PI ;
+            for (int j = 0; j < 2; j++)
+            {
+                float theta = i * 2 * Mathf.PI / resolution;
+            
+                // Vertices calculation :
+                vertices[i + 2] = new Vector3((radius * Mathf.Cos(theta)) * Mathf.Cos(phi), (radius * Mathf.Sin(theta)) * Mathf.Sin(phi), height );
 
-            // Triangles calcuation
-            tris[6 * i] = resolution;
-            tris[6 * i + 1] = i;
-            tris[6 * i + 2] = ((i + 1) % resolution);
 
-            tris[6 * i + 3] = resolution + 1;
-            tris[6 * i + 4] = ((i + 1) % resolution);
-            tris[6 * i + 5] = i;
-                
-            // UVs calculation
-            uvs[i] = new Vector2(Mathf.Abs(i / (float) resolution - 0.5f)+0.5f, 0.8f);
+                // Triangles calcuation
+                tris[6 * i] = resolution;
+                tris[6 * i + 1] = i;
+                tris[6 * i + 2] = ((i + 1) % resolution);
+
+                tris[6 * i + 3] = resolution + 1;
+                tris[6 * i + 4] = ((i + 1) % resolution);
+                tris[6 * i + 5] = i;
+                    
+                // UVs calculation
+                uvs[i] = new Vector2(Mathf.Abs(i / (float) resolution - 0.5f)+0.5f, 0.8f);
+            }
         }
         #endregion
         mesh.vertices = vertices;
