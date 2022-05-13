@@ -69,11 +69,15 @@ public class IceCreamGenerator : MonoBehaviour
         int[] tris = new int[resolution * 2 * 3];
         Vector2[] uvs = new Vector2[resolution + 2];
 
+        vertices[resolution] = new Vector3(0,0,0);
+        vertices[resolution+1] = new Vector3(0,height,0);
+
         uvs[resolution] = new Vector2(0.5f, 0);
         uvs[resolution + 1] = new Vector2(0.5f, 1);
         for(int i = 0; i < resolution; i++)
         {
             float theta = i * 2 * Mathf.PI / resolution;
+            vertices[i] = new Vector3(radius*Mathf.Cos(theta),height,radius*Mathf.Sin(theta));
 
             // Triangles calcuation
             tris[6 * i] = resolution;
