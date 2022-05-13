@@ -62,7 +62,7 @@ public class Piece : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow) && column > 0)
         {
             rigid.transform.transform.x = rigid.transform.x + newX;
-        } 
+        }
     }
 
     // Release the piece so it drops in the column
@@ -89,5 +89,12 @@ public class Piece : MonoBehaviour
         }
     }
 
-    // TODO: Detect When the piece reached its final place and trigger next turn
+    private void OnCollisionEnter (Collision collision)
+    {
+        if (collision != null && isReleased== true)
+        {
+            hasReachedFinalPlace = true;
+            NextTurn();
+        }
+    }
 }
