@@ -872,6 +872,7 @@ GameObject:
   - component: {fileID: 1646085068}
   - component: {fileID: 1646085067}
   - component: {fileID: 1646085066}
+  - component: {fileID: 1646085070}
   m_Layer: 5
   m_Name: FinalUI
   m_TagString: Untagged
@@ -961,6 +962,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!95 &1646085070
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646085064}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e221fb72ced2bdb42b3ea395a9f98828, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1933129694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,3 +1221,4 @@ MonoBehaviour:
   piecesContainer: {fileID: 1933129695}
   FinalUI: {fileID: 1646085064}
   finalUIText: {fileID: 681657579}
+  hasReachedFinalPlace: 0

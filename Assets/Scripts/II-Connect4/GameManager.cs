@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     // Reference to the piece being used in the current turn (moving/releasing above the board)
     private Piece currentPiece;
-
+    public bool hasReachedFinalPlace;
 
     void Start()
     {
@@ -100,12 +100,15 @@ public class GameManager : MonoBehaviour
                 game.addPieceInColumn(currentPiece.owner, currentPiece.column);
                 currentPiece.Release();
             }
+      
         }
 
         // TO REMOVE when next turn is triggered by a piece reaching its final place
         // Temporary going to next turn when pressing tab
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (hasReachedFinalPlace == true)
+        {
             NextTurn();
+        }
     }
 
     // Start the next turn

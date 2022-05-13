@@ -19,7 +19,7 @@ public class Piece : MonoBehaviour
     private bool isReleased = false;
 
     // Has this piece reached its final position in the board (bottom of the board or above another piece)
-    private bool hasReachedFinalPlace = false;
+    public bool hasReachedFinalPlace = false;
 
 
     void Awake()
@@ -80,9 +80,19 @@ public class Piece : MonoBehaviour
         this.owner = owner;
 
         // TODO: Assign the correct material to the piece renderer
-    
+
 
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
-}
+    public void OnTriggerEnter()
+    {
+            if (isReleased && GetComponent<Rigidbody>() == false)
+            {
+   
+            }
+        }
+ 
+            
+    }
+           
