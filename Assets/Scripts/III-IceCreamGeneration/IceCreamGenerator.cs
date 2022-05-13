@@ -10,6 +10,9 @@ public class IceCreamGenerator : MonoBehaviour
     [Range(0, 250)]
     public int revolutionResolution = 40;
 
+    [Range(0f,0.2f)]
+    public float reliefsize = 0.05f;
+
     // 'prev' variables to detect changes over time on original variables
     float prevRadius;
     float prevHeight;
@@ -58,7 +61,7 @@ public class IceCreamGenerator : MonoBehaviour
     // This function generates an ice cream cornet mesh and apply it to the MeshFilter of that GameObject
     // TODO: Triangles and UVs are being calculated, but vertices are missing. Complete this function with vertices calculation
     // to fully generate the ice cream cornet
-    public void GenerateIceCream(float radius, float height, int resolution)
+    public async void GenerateIceCream(float radius, float height, int resolution)
     {
         // Mesh generation
         Mesh mesh = new Mesh();
@@ -75,7 +78,12 @@ public class IceCreamGenerator : MonoBehaviour
         {
             float theta = i * 2 * Mathf.PI / resolution;
 
-            // Triangles calcuation
+            //Vertices calculation
+            vertices[i] = new Vector3(radius * Mathf.Cos(theta),
+                    height + (i % 2 == 0 ? reliefsize : -reliefsize),
+                    radius * Mathf.Sin(theta));
+
+            // Triangles calculation
             tris[6 * i] = resolution;
             tris[6 * i + 1] = i;
             tris[6 * i + 2] = ((i + 1) % resolution);
@@ -83,10 +91,12 @@ public class IceCreamGenerator : MonoBehaviour
             tris[6 * i + 3] = resolution + 1;
             tris[6 * i + 4] = ((i + 1) % resolution);
             tris[6 * i + 5] = i;
-                
+
             // UVs calculation
             uvs[i] = new Vector2(Mathf.Abs(i / (float) resolution - 0.5f)+0.5f, 0.8f);
         }
+        vertices[resolution] = Vector3.zero;
+        vertices[resolution+1] = Vector3.up * height;
         #endregion
         mesh.vertices = vertices;
         mesh.triangles = tris;
