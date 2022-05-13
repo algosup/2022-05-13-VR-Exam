@@ -82,12 +82,10 @@ public class Piece : MonoBehaviour
         // TODO: Assign the correct material to the piece renderer
         if (playerPieceMaterial)
         {
-            MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
             MeshRenderer.material = YellowPiece;
         }
         if (AIPieceMaterial)
         {
-            MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
             MeshRenderer.material = RedPiece;
         }
     }
