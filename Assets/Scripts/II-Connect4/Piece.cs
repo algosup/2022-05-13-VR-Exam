@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Piece : MonoBehaviour
 {
     // Width of a column in the board
@@ -11,7 +10,6 @@ public class Piece : MonoBehaviour
     public Connect4Game.Owner owner;
     // Column in which this piece will be or has been released to
     public int column = 3;
-
     // Reference to the attached rigidbody
     private Rigidbody rigid;
 
@@ -44,7 +42,7 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        // TODO: update piece position
+        transform.position = new Vector3(newX, transform.position.y, transform.position.z);
     }
 
     // Move the piece above the next column on the left (if exists)
@@ -56,7 +54,7 @@ public class Piece : MonoBehaviour
         // New x position of the piece
         float newX = (column - 3) * COLUMN_WIDTH;
 
-        // TODO: update piece position
+        transform.position = new Vector3(newX, transform.position.y, transform.position.z);
     }
 
     // Release the piece so it drops in the column
@@ -72,9 +70,23 @@ public class Piece : MonoBehaviour
     {
         // Update owner
         this.owner = owner;
-
         // TODO: Assign the correct material to the piece renderer
+        //?DONE :
+        if(owner == Connect4Game.Owner.PLAYER){
+            GetComponent<MeshRenderer>().material = GameManager.instance.playerPieceMaterial;
+        }else{
+            GetComponent<MeshRenderer>().material = GameManager.instance.AIPieceMaterial;
+        }
     }
 
     // TODO: Detect When the piece reached its final place and trigger next turn
+    //?DONE :
+    private void OnCollisionEnter(Collision other){
+        if(hasReachedFinalPlace == false){
+            if(other.transform.tag == "BottomCollider" || other.transform.tag == "Piece"){
+                hasReachedFinalPlace = true;
+                GameManager.instance.NextTurn();
+            }
+        }
+    }
 }

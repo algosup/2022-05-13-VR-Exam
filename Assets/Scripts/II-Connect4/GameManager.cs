@@ -101,11 +101,6 @@ public class GameManager : MonoBehaviour
                 currentPiece.Release();
             }
         }
-
-        // TO REMOVE when next turn is triggered by a piece reaching its final place
-        // Temporary going to next turn when pressing tab
-        if (Input.GetKeyDown(KeyCode.Tab))
-            NextTurn();
     }
 
     // Start the next turn
@@ -124,6 +119,7 @@ public class GameManager : MonoBehaviour
     {
         // Show the final UI with the updated text (depending on who won)
         // and update the isGameRunning state
+        FinalUI.transform.GetChild(0).GetComponent<Animator>().SetBool("gameFinished", true);
         switch(winner)
         {
             case Connect4Game.Owner.NONE:

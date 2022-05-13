@@ -1,7 +1,7 @@
 Write your answers to the 3 questions below
 
-1.
+1.  A VR app needs different types of controls, there exist 3 of them, you need to be aware of the possibility of headache and other effects depending on which you will choose to move/turn around. They are all different to the way of moving on 2D screens
 
-2.
+2.HMD
 
-3.
+3.Passive stereoscopy
