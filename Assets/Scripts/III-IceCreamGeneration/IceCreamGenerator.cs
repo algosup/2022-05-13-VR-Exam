@@ -68,7 +68,7 @@ public class IceCreamGenerator : MonoBehaviour
         {
             //This is useless
             //Where do I input those value?
-            if(i % 2 == 0)
+            if (i % 2 == 0)
             {
                 x = radius * Mathf.Cos(i);
                 y = height;
@@ -82,9 +82,7 @@ public class IceCreamGenerator : MonoBehaviour
             }
 
             //close enough
-            Vector3[] vertice;
-            vertice[0] = new Vector3(x, y, z);
-            vertice[1] = new Vector3(0, 0, 0);
+            Vector3[] vertice = [new Vector3(x, y, z), new Vector3(0, 0, 0)];
 
             Mesh.SetVertices(vertice);
         }
